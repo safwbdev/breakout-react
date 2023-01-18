@@ -1,8 +1,16 @@
-export default function WallCollision(ballObj:any, canvas:any) {
-  if (ballObj.y - ballObj.rad < 0 || ballObj.y + ballObj.rad > canvas.height) {
-    ballObj.dy *= -1;
+export default function WallCollision(ball:any, player:any, canvas:any, racquet:any) {
+
+  if(ball.y + ball.rad >= canvas.height){
+    player.lives--
+    ball.x = racquet.x - canvas.width / 2 + racquet.width - 30;
+    ball.y = racquet.y - 10
+    ball.dx = 6 * (Math.random() * 2 - 1)
+    ball.dy = -6;
   }
-  if (ballObj.x + ballObj.rad >= canvas.width || ballObj.x - ballObj.rad < 0) {
-    ballObj.dx *= -1;
+  if (ball.y - ball.rad < 0 ) {
+    ball.dy *= -1;
+  }
+  if (ball.x + ball.rad >= canvas.width || ball.x - ball.rad < 0) {
+    ball.dx *= -1;
   }
 }

@@ -11,7 +11,7 @@ export default function Brick(level:any, bricks:any, canvas:any, brick:any) {
   }
 
   for (let i = 0; i < 5 * level; i++) {
-    let newBrick = new SingleBrick(
+    const newBrick = new SingleBrick(
       brick.x + brick.width,
       brick.y,
       brick.width,
