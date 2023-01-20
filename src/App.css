@@ -1,5 +1,9 @@
 .App {
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: rgb(46, 10, 10);
 }
 
 .App-logo {
@@ -41,4 +45,5 @@
 #canvas{
   background-color: #000000;
   border-radius: 20px;
+  cursor: none;
 }
