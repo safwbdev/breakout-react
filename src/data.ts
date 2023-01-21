@@ -15,7 +15,7 @@ const data = {
     colors: ["red", "lime"],
   },
   playerData: {
-    name: "Player",
+    name: "Breakout!",
     lives: 3,
     score: 0,
     level: 1,

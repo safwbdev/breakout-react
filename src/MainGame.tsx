@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { MoveBall } from "./props/Ball";
 import data from "./data";
 import WallCollision from "./utils/WallCollision";
@@ -13,26 +13,25 @@ import ResetBall from "./utils/ResetBall";
 const Main = () => {
   const canvasRef = useRef(null); 
   const { ballData, racquetData, brickData, playerData } = data;
-  let bricks:any = [];
-  // const [bricks, setbricks] = useState<any[]>([])
   
   const moveRacquet = (event:any) => racquetData.x = event.clientX - racquetData.width * 2
-
+  
   useEffect(() => {
+    let bricks:any = [];
+
     const render = () => {
       const canvas:any | null = canvasRef.current;
-
       const ctx = canvas.getContext("2d");
+
       canvas.height = window.innerHeight * 90 /100;
       canvas.width = window.innerWidth * 80 / 100;
+      
       racquetData.y = canvas.height - 30;
 
       let brickSet = Brick(playerData.level, bricks, canvas, brickData);
 
       if (brickSet && brickSet.length > 0) {
-        bricks = brickSet;
-        // setbricks(brickSet);
-        
+        bricks = brickSet;        
       }
       
       ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -73,13 +72,13 @@ const Main = () => {
       }
       
       Racquet(ctx, canvas, racquetData);
-      RacquetHit(ballData, racquetData);
-      
+      RacquetHit(ballData, racquetData);      
       requestAnimationFrame(render);
     };
+
     render();
-  }, []);
-  // }, [ballData, brickData, playerData, racquetData, bricks]);
+    
+  }, [ballData, brickData, playerData, racquetData]);
 
   return (
     <canvas
