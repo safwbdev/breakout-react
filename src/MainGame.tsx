@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { MoveBall } from "./props/Ball";
 import data from "./data";
 import WallCollision from "./utils/WallCollision";
@@ -13,8 +13,19 @@ import ResetBall from "./utils/ResetBall";
 const Main = () => {
   const canvasRef = useRef(null); 
   const { ballData, racquetData, brickData, playerData } = data;
+  const [gameOver, setGameOver] = useState(false)
+  const [gameStart, setGameStart] = useState(false)
+  const [finalScore, setFinalScore] = useState(0)
   
-  const moveRacquet = (event:any) => racquetData.x = event.clientX - racquetData.width * 2
+  const moveRacquet = (event:any) => racquetData.x = event.clientX - racquetData.width * 2;
+
+  const startGame = ()=> {
+    setGameStart(true);
+  }
+  const restartGame = ()=> {
+    setGameStart(true);
+    setGameOver(false);
+  }
   
   useEffect(() => {
     let bricks:any = [];
@@ -37,8 +48,11 @@ const Main = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       ScoreBoard(ctx, playerData, canvas);
 
-      if(playerData.lives === 0){
-        alert('GAMEOVER! Press Ok to retry');
+      if(gameStart && playerData.lives === 0){
+        setFinalScore(playerData.score)
+        // alert(`GAMEOVER! You scored ${playerData.score} points`);
+        setGameOver(true)
+        // setGameStart(false);
         playerData.lives = 3;
         playerData.level = 1;
         playerData.score = 0;
@@ -76,16 +90,33 @@ const Main = () => {
       requestAnimationFrame(render);
     };
 
-    render();
+    if(gameStart){
+      render();
+    }
     
-  }, [ballData, brickData, playerData, racquetData]);
+  }, [ballData, brickData, playerData, racquetData, gameStart]);
 
   return (
-    <canvas
-      id="canvas"
-      ref={canvasRef}
-      onMouseMove={(e)=> moveRacquet(e)}
-    />
+    <div>
+      <canvas
+        id="canvas"
+        ref={canvasRef}
+        onMouseMove={(e)=> moveRacquet(e)}
+        />
+      <div className="GameStartWindow" style={{display: gameStart ? "none" : "block"}}>
+        <div className="GameStartInner">
+        <h1>{playerData.name}</h1>
+        <button onClick={()=>startGame()}>Start</button>
+        </div>
+      </div>
+      <div className="GameStartWindow" style={{display: !gameOver ? "none" : "block"}}>
+        <div className="GameStartInner">
+        <h1>Game Over</h1>
+        <h2>{finalScore} pts</h2>
+        <button onClick={()=>restartGame()}>Rettry</button>
+        </div>
+      </div>
+    </div>
   );
 };
 

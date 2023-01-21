@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# Live Demo
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Access the live demo [here](https://cute-speculoos-40c955.netlify.app/).
 
 ## Available Scripts
 

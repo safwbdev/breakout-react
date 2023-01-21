@@ -3,7 +3,8 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background: rgb(46, 10, 10);
+  /* background: rgb(46, 10, 10); */
+  background: #000000;
 }
 
 .App-logo {
@@ -46,4 +47,32 @@
   background-color: #000000;
   border-radius: 20px;
   cursor: none;
+  border: 2px solid lime;
+}
+.GameStartWindow{
+  position: absolute;
+  z-index: 9999;
+  top:0;
+  left:0;
+  width: 100%;
+}
+.GameStartWindow button{
+  font-family: 'Press Start 2P', cursive;
+  text-transform: uppercase;
+  color: lime;
+  background: transparent;
+  border: 2px solid lime;
+  padding: 1em;
+  cursor: pointer;
+}
+.GameStartWindow .GameStartInner{
+  font-family: 'Press Start 2P', cursive;
+  text-transform: uppercase;
+  background: black;
+  color: lime;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
 }
