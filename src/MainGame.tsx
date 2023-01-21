@@ -113,7 +113,7 @@ const Main = () => {
             height: `${window.innerHeight * 90 /100}px`}}>
           <h1>{playerData.name}</h1>
           <p className="ghLink">
-            <a href="https://github.com/safwbdev/breakout-react">
+            <a href={playerData.link} target="_blank" rel="noreferrer">
               <i className="fab fa-github"></i> Check out Code
             </a>
           </p>
@@ -131,7 +131,7 @@ const Main = () => {
           <h1>Game Over</h1>
           <h2>{finalScore} pts</h2>
           <p className="ghLink">
-            <a href="https://github.com/safwbdev/breakout-react">
+            <a href={playerData.link} target="_blank" rel="noreferrer">
               <i className="fab fa-github"></i> Check out Code
             </a>
           </p>
