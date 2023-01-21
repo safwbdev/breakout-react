@@ -7,7 +7,8 @@ export default function ScoreBoard(ctx:any, player:any, canvas:any){
     ctx.fillStyle ="red"
     let gap = 0;
     for (let i = 0; i < player.lives; i++) {
-        ctx.fillText(`♥`, 130 + gap, 30)
+        // ctx.fillText(`♥`, 130 + gap, 30)
+        ctx.fillText(`o`, 130 + gap, 33)
         gap+=30;        
     }
 

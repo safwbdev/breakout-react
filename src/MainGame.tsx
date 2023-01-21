@@ -103,17 +103,39 @@ const Main = () => {
         ref={canvasRef}
         onMouseMove={(e)=> moveRacquet(e)}
         />
-      <div className="GameStartWindow" style={{display: gameStart ? "none" : "block"}}>
-        <div className="GameStartInner">
-        <h1>{playerData.name}</h1>
-        <button onClick={()=>startGame()}>Start</button>
+      <div
+        className="GameStartWindow"
+        style={{  display: gameStart ? "none" : "flex"}}>
+        <div
+          className="GameStartInner"
+          style={{
+            width: `${window.innerWidth * 80 /100}px`,
+            height: `${window.innerHeight * 90 /100}px`}}>
+          <h1>{playerData.name}</h1>
+          <p className="ghLink">
+            <a href="https://github.com/safwbdev/breakout-react">
+              <i className="fab fa-github"></i> Check out Code
+            </a>
+          </p>
+          <button onClick={()=>startGame()}>Start</button>
         </div>
       </div>
-      <div className="GameStartWindow" style={{display: !gameOver ? "none" : "block"}}>
-        <div className="GameStartInner">
-        <h1>Game Over</h1>
-        <h2>{finalScore} pts</h2>
-        <button onClick={()=>restartGame()}>Rettry</button>
+      <div
+        className="GameStartWindow"
+        style={{display: !gameOver ? "none" : "flex"}}>
+        <div
+          className="GameStartInner"
+          style={{
+            width: `${window.innerWidth * 80 /100}px`,
+            height: `${window.innerHeight * 90 /100}px`}}>
+          <h1>Game Over</h1>
+          <h2>{finalScore} pts</h2>
+          <p className="ghLink">
+            <a href="https://github.com/safwbdev/breakout-react">
+              <i className="fab fa-github"></i> Check out Code
+            </a>
+          </p>
+          <button onClick={()=>restartGame()}>Retry</button>
         </div>
       </div>
     </div>
